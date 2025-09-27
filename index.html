@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XdimsDev Downloader - TikTok No Watermark</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-download"></i>
+                XdimsDev Downloader
+            </div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#how-to">How to Use</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="brand-logo">
+                    <i class="fas fa-download"></i>
+                    <h1>XdimsDev Downloader</h1>
+                </div>
+                <h2 class="hero-subtitle">
+                    <span class="gradient-text">TikTok Video Downloader</span><br>
+                    No Watermark • HD Quality • Free
+                </h2>
+                <p class="hero-description">
+                    Download video TikTok dengan kualitas terbaik tanpa watermark. Cepat, gratis, dan mudah digunakan!
+                </p>
+                
+                <!-- Download Form -->
+                <div class="download-form">
+                    <div class="input-group">
+                        <input type="text" id="tiktokUrl" placeholder="Paste TikTok link here..." class="url-input">
+                        <button onclick="downloadVideo()" class="download-btn">
+                            <i class="fas fa-download"></i>
+                            Download Now
+                        </button>
+                    </div>
+                    <div class="examples">
+                        <span>Supported formats: </span>
+                        <code>https://vm.tiktok.com/xyz/</code>
+                        <code>https://www.tiktok.com/@user/video/123</code>
+                    </div>
+                </div>
+
+                <!-- Result Section -->
+                <div id="result" class="result-container" style="display: none;">
+                    <div class="video-preview">
+                        <video id="videoPlayer" controls class="video-player"></video>
+                    </div>
+                    <div class="video-info">
+                        <h3 id="videoTitle">Video Title</h3>
+                        <p id="videoAuthor">By @username</p>
+                    </div>
+                    <div class="download-options">
+                        <button onclick="downloadFile()" class="btn-primary">
+                            <i class="fas fa-download"></i>
+                            Download Video
+                        </button>
+                        <button onclick="copyLink()" class="btn-secondary">
+                            <i class="fas fa-copy"></i>
+                            Copy Link
+                        </button>
+                        <button onclick="shareVideo()" class="btn-tertiary">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading -->
+                <div id="loading" class="loading-container" style="display: none;">
+                    <div class="xdims-loader">
+                        <div class="loader-circle"></div>
+                        <div class="loader-text">XdimsDev Processing...</div>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error" class="error-container" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p id="errorMessage"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose XdimsDev Downloader?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Download</h3>
+                    <p>Download video TikTok dengan kecepatan tinggi tanpa batas</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hd-video"></i>
+                    </div>
+                    <h3>HD Quality</h3>
+                    <p>Kualitas video hingga 1080p tanpa kompresi</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>No Watermark</h3>
+                    <p>Video bersih tanpa watermark TikTok</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Optimized untuk semua perangkat mobile</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="downloadCount">10,000+</div>
+                    <div class="stat-label">Successful Downloads</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Free Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section id="how-to" class="how-to">
+        <div class="container">
+            <h2 class="section-title">How to Use XdimsDev Downloader</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <i class="fas fa-link"></i>
+                        <h3>Copy TikTok Link</h3>
+                        <p>Buka aplikasi TikTok dan copy link video yang ingin didownload</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <i class="fas fa-paste"></i>
+                        <h3>Paste Link</h3>
+                        <p>Tempel link TikTok ke form download di website ini</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <i class="fas fa-download"></i>
+                        <h3>Download</h3>
+                        <p>Klik tombol download dan tunggu proses selesai</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About XdimsDev Downloader</h2>
+                    <p>XdimsDev Downloader adalah platform download video TikTok tanpa watermark yang dikembangkan dengan teknologi terkini. Kami menyediakan layanan gratis dengan kualitas terbaik untuk semua pengguna.</p>
+                    
+                    <div class="tech-stack">
+                        <h3>Technology Stack</h3>
+                        <div class="tech-items">
+                            <span class="tech-item">HTML5</span>
+                            <span class="tech-item">CSS3</span>
+                            <span class="tech-item">JavaScript</span>
+                            <span class="tech-item">PHP</span>
+                            <span class="tech-item">REST API</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-buttons">
+                                <span class="red"></span>
+                                <span class="yellow"></span>
+                                <span class="green"></span>
+                            </div>
+                            <span class="window-title">xdimsdev.js</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code>// XdimsDev Downloader API
+class XdimsDevDownloader {
+    constructor() {
+        this.version = '2.0.1';
+        this.apiUrl = 'https://api.xdimsdev.com';
+    }
+    
+    async downloadTikTok(url) {
+        const response = await fetch(`${this.apiUrl}/download`, {
+            method: 'POST',
+            body: JSON.stringify({ url })
+        });
+        return await response.json();
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Developer</h2>
+            <div class="contact-content">
+                <div class="developer-info">
+                    <div class="developer-card">
+                        <div class="dev-avatar">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>@itzfarzz</h3>
+                        <p>Full Stack Developer</p>
+                        <div class="dev-social">
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Get in Touch</h3>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-download"></i>
+                        XdimsDev Downloader
+                    </div>
+                    <p>Platform download video TikTok tanpa watermark terbaik. Gratis dan mudah digunakan.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#how-to">How to Use</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <a href="#">Help Center</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe untuk update terbaru</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 XdimsDev Downloader. All rights reserved. | Developed with ❤️ by @itzfarzz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
